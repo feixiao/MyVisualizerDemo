@@ -59,12 +59,16 @@ public class MainActivity extends AppCompatActivity {
         // 如果waveform为false，fft为true则会回调onFftDataCapture方法。
         visualizer.setDataCaptureListener(new Visualizer.OnDataCaptureListener(){
 
+            // waveform是波形采样的字节数组，它包含一系列的8位（无符号）的PCM单声道样本
             @Override
             public void onWaveFormDataCapture(Visualizer visualizer, byte[] waveform, int samplingRate) {
                 Log.e("onWaveFormDataCapture","调用了！");
                 visualizerView.updateVisualizer(waveform);
             }
 
+
+            // 数字信号处理相关的知识，FFT（Fast Fourier Transformation），即快速傅里叶转换，它用于把时域上连续的信号(波形)强度转换成离散的频域信号(频谱)
+            // fft是经过FFT转换后频率采样的字节数组，频率范围为0（直流）到采样值的一半
             @Override
             public void onFftDataCapture(Visualizer visualizer, byte[] fft, int samplingRate) {
                 Log.e("onFftDataCapture","调用了！");

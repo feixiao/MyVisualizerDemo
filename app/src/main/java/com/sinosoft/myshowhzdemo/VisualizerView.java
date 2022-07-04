@@ -43,7 +43,7 @@ public class VisualizerView extends View {
         invalidate();
     }
 
-   /* private byte type = 0;
+    private byte type = 0;
     @Override
     public boolean onTouchEvent(MotionEvent me)
     {
@@ -58,7 +58,7 @@ public class VisualizerView extends View {
             type = 0;
         }
         return true;
-    }*/
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -69,7 +69,7 @@ public class VisualizerView extends View {
         }
 
         mRect.set(0,0,getWidth(),getHeight());
-        /*switch(type) {
+        switch(type) {
             // -------绘制块状的波形图-------
             case 0:
                 for (int i = 0; i < mBytes.length - 1; i++) {
@@ -120,7 +120,7 @@ public class VisualizerView extends View {
                 canvas.drawLines(mPoints, mForePaint);
                 break;
 
-        }*/
+        }
         if (mPoints == null || mPoints.length < mBytes.length * 4) {
             mPoints = new float[mBytes.length * 4];
 
