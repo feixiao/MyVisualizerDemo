@@ -49,8 +49,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         visualizer = new Visualizer(mediaPlayer.getAudioSessionId());
+        // 这一底层实现的方法来返回一个采样值的范围数组，0为最小值128,1为最大值1024！采样值都为2的n次幂！
         visualizer.setCaptureSize(Visualizer.getCaptureSizeRange()[1]);
+
         Log.e("CaptureSizeRange",Visualizer.getCaptureSizeRange()[1]+"");//0为128；1为1024
+
+        // 设置监听器 setDataCaptureListener(Visualizer.OnDataCaptureListener listener, int rate, boolean waveform, boolean fft)
+        // 如果waveform为true，fft为false则会回调onWaveFormDataCapture方法
+        // 如果waveform为false，fft为true则会回调onFftDataCapture方法。
         visualizer.setDataCaptureListener(new Visualizer.OnDataCaptureListener(){
 
             @Override
@@ -75,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 visualizerView.updateVisualizer(model);
             }
-        } , Visualizer.getMaxCaptureRate()/2, false, true );
+        } , Visualizer.getMaxCaptureRate()/2, true, false );
+
         Log.e("采样频率",Visualizer.getMaxCaptureRate()/2+"");//10000mHz=10Hz
         visualizer.setEnabled(true);//这个设置必须在参数设置之后，表示开始采样
     }
