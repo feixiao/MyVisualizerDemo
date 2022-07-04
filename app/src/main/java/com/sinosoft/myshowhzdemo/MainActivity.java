@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mediaPlayer) {
-                visualizer.setEnabled(false);//歌曲流完毕，则不再采样
+                visualizer.setEnabled(false);   //  歌曲流完毕，则不再采样
             }
         });
         mediaPlayer.start();
@@ -88,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         } , Visualizer.getMaxCaptureRate()/2, true, false );
 
         Log.e("采样频率",Visualizer.getMaxCaptureRate()/2+"");//10000mHz=10Hz
-        visualizer.setEnabled(true);//这个设置必须在参数设置之后，表示开始采样
+
+        // 这个设置必须在参数设置之后，表示开始采样
+        visualizer.setEnabled(true);
     }
 
 
